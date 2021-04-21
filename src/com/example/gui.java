@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 public class gui {
     public gui(){
         //frames
-        JFrame f = new JFrame();
+        JFrame f = new JFrame("ATM machine");
         f.setName("Atm machine");
         f.setSize(400,200);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
