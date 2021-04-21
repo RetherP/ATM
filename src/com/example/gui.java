@@ -52,8 +52,6 @@ public class gui {
             }
         });
 
-
-
         //adding fields
         f.add(title);
         f.add(username);
