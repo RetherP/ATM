@@ -29,12 +29,12 @@ public class gui {
         title.setBorder(BorderFactory.createEmptyBorder());
 
         username= new JTextField("username:");
-        username.setBounds(0, 50, 60,20);
+        username.setBounds(0, 50, 70,20);
         username.setEditable(false);
         username.setBorder(BorderFactory.createEmptyBorder());
 
         pw= new JTextField("password:");
-        pw.setBounds(0, 100, 60,20);
+        pw.setBounds(0, 100, 70,20);
         pw.setEditable(false);
         pw.setBorder(BorderFactory.createEmptyBorder());
 
