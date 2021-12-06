@@ -11,7 +11,7 @@ public class Connect {
     public Connect(){
         try{
             con= DriverManager.getConnection("jdbc:sqlite:data.sqlite");
-            JOptionPane.showMessageDialog(null, "Working", null, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The database is succesfully connected", null, JOptionPane.INFORMATION_MESSAGE);
 
         }
         catch (Exception e) {

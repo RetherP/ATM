@@ -1,20 +1,18 @@
 package com.example;
 import javax.swing.*;
-import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class gui {
+public class logingui {
     static JFrame f;
     static JTextField title;
     static JTextField username;
     static JTextField pw;
     static JTextField userinut;
     static JTextField pwinput;
-    public gui(){
+    static JButton b;
+    public logingui(){
         //frames
         f = new JFrame("ATM machine");
         f.setName("Atm machine");
@@ -28,8 +26,8 @@ public class gui {
         title.setEditable(false);
         title.setBorder(BorderFactory.createEmptyBorder());
 
-        username= new JTextField("username:");
-        username.setBounds(0, 50, 70,20);
+        username= new JTextField("Card number:");
+        username.setBounds(0, 50, 90,20);
         username.setEditable(false);
         username.setBorder(BorderFactory.createEmptyBorder());
 
@@ -39,8 +37,8 @@ public class gui {
         pw.setBorder(BorderFactory.createEmptyBorder());
 
         //input
-        userinut= new JTextField("Enter your username");
-        userinut.setBounds(80,50, 150, 20);
+        userinut= new JTextField("Enter your card number");
+        userinut.setBounds(90,50, 165, 20);
         userinut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         userinut.addMouseListener(new MouseAdapter() {
             @Override
@@ -48,8 +46,8 @@ public class gui {
                 userinut.setText("");
             }
         });
-        pwinput= new JTextField("Enter your password");
-        pwinput.setBounds(80,100,150,20);
+        pwinput= new JTextField("Enter your pin");
+        pwinput.setBounds(90,100,165,20);
         pwinput.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         pwinput.addMouseListener(new MouseAdapter() {
             @Override
@@ -57,8 +55,12 @@ public class gui {
                 pwinput.setText("");
             }
         });
+        //button
+        b = new JButton("Login");
+        b.setBounds(275, 47, 90,80);
 
         //adding fields
+        f.add(b);
         f.add(title);
         f.add(username);
         f.add(pw);
