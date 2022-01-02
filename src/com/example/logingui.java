@@ -12,6 +12,7 @@ public class logingui {
     static JTextField userinut;
     static JTextField pwinput;
     static JButton b;
+    static JButton r;
     public logingui(){
         //frames
         f = new JFrame("ATM machine");
@@ -31,7 +32,7 @@ public class logingui {
         username.setEditable(false);
         username.setBorder(BorderFactory.createEmptyBorder());
 
-        pw= new JTextField("password:");
+        pw= new JTextField("Password:");
         pw.setBounds(0, 100, 70,20);
         pw.setEditable(false);
         pw.setBorder(BorderFactory.createEmptyBorder());
@@ -55,12 +56,15 @@ public class logingui {
                 pwinput.setText("");
             }
         });
-        //button
+        //loginbutton
         b = new JButton("Login");
         b.setBounds(275, 47, 90,80);
-
+        //registerbutton
+        r= new JButton("Register");
+        r.setBounds(100, 130, 150, 30);
         //adding fields
         f.add(b);
+        f.add(r);
         f.add(title);
         f.add(username);
         f.add(pw);
