@@ -1,8 +1,11 @@
 package com.example;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Statement;
 
 public class logingui {
     static JFrame f;
@@ -59,6 +62,22 @@ public class logingui {
         //loginbutton
         b = new JButton("Login");
         b.setBounds(275, 47, 90,80);
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connect a = new Connect();
+                logingui b = new logingui();
+
+                try{
+                    String sql=" ";
+                    Statement stmt = a.con.createStatement();
+                    stmt.execute(sql);
+                }
+                catch (Exception k){
+                    JOptionPane.showMessageDialog(null, k.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
         //registerbutton
         r= new JButton("Register");
         r.setBounds(100, 130, 150, 30);
