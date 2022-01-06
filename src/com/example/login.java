@@ -7,7 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Statement;
 
-public class logingui {
+public class login {
+    //variable
     static JFrame f;
     static JTextField title;
     static JTextField username;
@@ -16,7 +17,7 @@ public class logingui {
     static JTextField pwinput;
     static JButton b;
     static JButton r;
-    public logingui(){
+    public login(){
         //frames
         f = new JFrame("ATM machine");
         f.setName("Atm machine");
@@ -65,22 +66,18 @@ public class logingui {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Connect a = new Connect();
-                logingui b = new logingui();
-
-                try{
-                    String sql=" ";
-                    Statement stmt = a.con.createStatement();
-                    stmt.execute(sql);
-                }
-                catch (Exception k){
-                    JOptionPane.showMessageDialog(null, k.getMessage(), null, JOptionPane.ERROR_MESSAGE);
-                }
             }
         });
         //registerbutton
         r= new JButton("Register");
         r.setBounds(100, 130, 150, 30);
+        r.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                register r = new register();
+                f.dispose();
+            }
+        });
         //adding fields
         f.add(b);
         f.add(r);
@@ -93,5 +90,19 @@ public class logingui {
         f.setLayout(null);
         f.setResizable(false);
         f.setVisible(true);
+    }
+    //check
+    public static void logincheck(){
+        Connect a = new Connect();
+
+        try{
+            String sql=" ";
+            Statement stmt = a.con.createStatement();
+            //stmt.execute(sql);
+            JOptionPane.showMessageDialog(null, "Success");
+        }
+        catch (Exception k) {
+            JOptionPane.showMessageDialog(null, k.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
