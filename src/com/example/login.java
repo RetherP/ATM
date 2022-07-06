@@ -94,7 +94,6 @@ public class login {
     //check
     public static void logincheck(){
         Connect a = new Connect();
-
         try{
             String sql=" ";
             Statement stmt = a.con.createStatement();
