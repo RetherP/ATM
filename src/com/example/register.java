@@ -1,6 +1,9 @@
 package com.example;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Statement;
@@ -18,7 +21,7 @@ public class register {
     static JTextField sein;
     static JTextField emailin;
     static JTextField phonein;
-    static JTextField pwin;
+    static JPasswordField pwin;
     public register(){
         //frame
         //text
@@ -53,6 +56,45 @@ public class register {
         password.setBorder(BorderFactory.createEmptyBorder());
         password.setEditable(false);
         //inputs
+        fin= new JTextField("Enter your First name!");
+        fin.setBounds(100,30,150,20);
+        fin.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        fin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                fin.setText("");
+            }
+        });
+        sein= new JTextField("Enter your Second name!");
+        sein.setBounds(100,50,150,20);
+        sein.setBorder(BorderFactory.createLineBorder((Color.BLACK)));
+        sein.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sein.setText("");
+            }
+        });
+        emailin= new JTextField("Enter your Email");
+        emailin.setBounds(100,70,150,20);
+        emailin.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        emailin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                emailin.setText("");
+            }
+        });
+        phonein= new JTextField("Enter your Phone number");
+        phonein.setBounds(100,90,150,20);
+        phonein.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        phonein.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                phonein.setText("");
+            }
+        });
+        pwin=new JPasswordField("");
+        pwin.setBounds(100,120,150,20);
+        pwin.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         //adding fields
         f.add(title);
@@ -61,6 +103,11 @@ public class register {
         f.add(email);
         f.add(phone_number);
         f.add(password);
+        f.add(fin);
+        f.add(sein);
+        f.add(emailin);
+        f.add(phonein);
+        f.add(pwin);
         //frame settings
         f.setLayout(null);
         f.setResizable(false);
