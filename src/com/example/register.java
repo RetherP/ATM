@@ -2,10 +2,7 @@ package com.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.sql.Statement;
 
 public class register {
@@ -22,6 +19,8 @@ public class register {
     static JTextField emailin;
     static JTextField phonein;
     static JPasswordField pwin;
+    static JButton r;
+    static boolean IsCcorrect;
     public register(){
         //frame
         //text
@@ -51,7 +50,7 @@ public class register {
         phone_number.setBounds(0,90,100,20);
         phone_number.setBorder(BorderFactory.createEmptyBorder());
         phone_number.setEditable(false);
-        password= new JTextField("Password:");
+        password= new JTextField("PIN:");
         password.setBounds(0,120,100,20);
         password.setBorder(BorderFactory.createEmptyBorder());
         password.setEditable(false);
@@ -95,7 +94,15 @@ public class register {
         pwin=new JPasswordField("");
         pwin.setBounds(100,120,150,20);
         pwin.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+        //button
+        r= new JButton("Register");
+        r.setBounds(270,40, 90,80);
+        r.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    regcheck();
+            }
+        });
         //adding fields
         f.add(title);
         f.add(first_name);
@@ -108,19 +115,24 @@ public class register {
         f.add(emailin);
         f.add(phonein);
         f.add(pwin);
+        f.add(r);
         //frame settings
         f.setLayout(null);
         f.setResizable(false);
         f.setVisible(true);
     }
     //check
-    public static void logincheck(){
+    public static void regcheck(){
         Connect a = new Connect();
         try{
-            String sql=" ";
+
             Statement stmt = a.con.createStatement();
-            //stmt.execute(sql);
+            //adduser
+            String adduser=String.format("INSERT INTO userinfo (id,firstname,secondname,email,phonenumber,password)" +
+                    "VALUES (2,'%s','%s','%s','%s','%s')",fin.getText(),sein.getText(),emailin.getText(),phonein.getText(),pwin.getPassword());
+            stmt.executeUpdate(adduser);
             JOptionPane.showMessageDialog(null, "Success");
+            stmt.close();
         }
         catch (Exception k) {
             JOptionPane.showMessageDialog(null, k.getMessage(), null, JOptionPane.ERROR_MESSAGE);
