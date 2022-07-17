@@ -3,7 +3,9 @@ package com.example;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Random;
 
 public class register {
     //variables
@@ -127,15 +129,34 @@ public class register {
         try{
 
             Statement stmt = a.con.createStatement();
-            //adduser
-            String adduser=String.format("INSERT INTO userinfo (id,firstname,secondname,email,phonenumber,password)" +
-                    "VALUES (2,'%s','%s','%s','%s','%s')",fin.getText(),sein.getText(),emailin.getText(),phonein.getText(),pwin.getPassword());
-            stmt.executeUpdate(adduser);
-            JOptionPane.showMessageDialog(null, "Success");
+            //getting id
+            String getid= String.format("SELECT max(id) from userinfo");
+            ResultSet rs = stmt.executeQuery(getid);
+            int id = Integer.parseInt(rs.getObject(1).toString())+1;
+            //add to userinfo
+            String addtouser=String.format("INSERT INTO userinfo (id,firstname,secondname,email,phonenumber,password)" +
+                    "VALUES ('%d','%s','%s','%s','%s','%s')",id,fin.getText(),sein.getText(),emailin.getText(),phonein.getText(),pwin.getPassword());
+            stmt.executeUpdate(addtouser);
+            //add to userlogin
+            int cardnumber= Integer.parseInt(GenerateCardNum());
+            for(int i = 0;i<id+1;i++){
+
+            }
+            String addtouserlog= String.format("INSERT INTO userlogin (user_id,card_number,card_pin)" +
+                    "VALUES ('%d','%d','%d')",id,cardnumber,pwin.getPassword());
+            JOptionPane.showMessageDialog(null, "You registered");
             stmt.close();
         }
         catch (Exception k) {
             JOptionPane.showMessageDialog(null, k.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
+    }
+    static String GenerateCardNum(){
+        String cardnum="";
+        Random rnd= new Random();
+        for(int i=0;i<10;i++){
+            cardnum+=rnd.nextInt(10);
+        }
+        return cardnum;
     }
 }
